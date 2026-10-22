@@ -3,25 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>শুভ জন্মদিন শিমু - বিশেষ দোয়া ও শুভেচ্ছা</title>
+    <title>শুভ জন্মদিন শিমু</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Google Fonts (Bangla Supported) -->
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Hind Siliguri', sans-serif;
-            -webkit-tap-highlight-color: transparent;
+            font-family: 'Hind Siliguri', 'Poppins', sans-serif;
+            background-color: #064e3b;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 25px 25px;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
+
+        /* REAL 3D BOOK FLIP ANIMATION */
+        .book-wrapper {
+            perspective: 1200px;
+        }
+        
+        .book {
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .book-cover {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform-origin: left;
+            transition: transform 0.8s ease-in-out;
+            transform-style: preserve-3d;
+            z-index: 2;
+        }
+
+        .book-cover-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+        }
+
+        .book-cover-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+            border-radius: 1rem;
+        }
+
+        /* Open Book State */
+        .book-wrapper.open .book-cover {
+            transform: rotateY(-160deg);
+        }
+
+        /* Floating Animation */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-8px); }
         }
-        .floating-card {
-            animation: float 4s ease-in-out infinite;
+        .floating {
+            animation: float 3.5s ease-in-out infinite;
         }
 
-        /* Pure CSS Floating Emoji Shower */
+        /* Emoji Shower Animation */
         .falling-emoji {
             position: fixed;
             top: -50px;
@@ -32,78 +85,148 @@
         }
 
         @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(105vh) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
-<body class="bg-gradient-to-br from-emerald-950 via-slate-900 to-teal-950 min-h-screen flex items-center justify-center p-4 sm:p-6 text-slate-100 overflow-x-hidden">
+<body class="min-h-screen flex flex-col justify-between items-center p-3 sm:p-6 text-slate-100">
 
-    <!-- Card Wrapper -->
-    <div class="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto my-auto">
-        <!-- Main Card -->
-        <div class="floating-card bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-5 sm:p-8 md:p-10 shadow-2xl relative overflow-hidden text-center">
-            
-            <!-- Decorative Glow Elements -->
-            <div class="absolute -top-12 -right-12 w-28 h-28 sm:w-36 sm:h-36 bg-amber-500/20 rounded-full blur-2xl pointer-events-none"></div>
-            <div class="absolute -bottom-12 -left-12 w-28 h-28 sm:w-36 sm:h-36 bg-emerald-500/20 rounded-full blur-2xl pointer-events-none"></div>
-
-            <!-- Top Icon / Badge -->
-            <div class="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-tr from-amber-400 to-amber-200 rounded-full shadow-lg text-slate-900 text-2xl mb-4 sm:mb-6 mx-auto">
-                🌸
-            </div>
-
-            <!-- Header -->
-            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-amber-300 mb-4 sm:mb-6 tracking-wide leading-tight">
-                শুভ জন্মদিন শিমু! 🎂
-            </h1>
-
-            <!-- Message Box -->
-            <div class="bg-black/25 rounded-2xl p-4 sm:p-6 border border-white/10 text-slate-200 text-sm sm:text-base md:text-lg leading-relaxed sm:leading-loose text-justify mb-6 sm:mb-8 shadow-inner space-y-3 sm:space-y-4">
-                <p class="font-semibold text-emerald-300 text-base sm:text-lg">আসসালামু আলাইকুম।</p>
-                
-                <p>আল্লাহর অশেষ কৃপায় তোমার জীবনের আরও একটি বছর কেটে গেল। মহান আল্লাহ সুবহানাহু ওয়া তায়ালা তোমার অতীতের সব ভুলত্রুটি ক্ষমা করে দিক, আর তোমার আগামী দিনগুলোকে ঈমান, চমৎকার সুস্থতা, বরকত ও হেদায়েতে পরিপূর্ণ করে দিক।</p>
-                
-                <p>আল্লাহ তোমাকে দুনিয়া ও আখেরাত—উভয় জগতেই উত্তম প্রতিদান দান করুন এবং তোমার জীবনের প্রতিটি ভালো ইচ্ছাকে কবুল করুন।</p>
-                
-                <p class="text-center font-bold text-amber-300 pt-2 text-base sm:text-lg">
-                    জন্মদিনের অনেক অনেক দোয়া ও শুভকামনা! 🤲✨
-                </p>
-            </div>
-
-            <!-- Celebration Button -->
-            <div class="flex justify-center items-center">
-                <button id="celebrateBtn" onclick="startCelebration()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-amber-500 via-emerald-500 to-teal-500 hover:from-amber-600 hover:to-teal-600 text-white font-bold text-base sm:text-lg rounded-2xl shadow-xl hover:shadow-emerald-500/20 transition-all duration-300 transform active:scale-95 cursor-pointer flex items-center justify-center gap-2 border border-white/20">
-                    <span>💖</span> ধন্যবাদ & শুভেচ্ছা গ্রহণ করুন 🎉
-                </button>
-            </div>
-
-            <!-- Creator Name Footer -->
-            <div class="mt-8 pt-4 border-t border-white/10 text-center">
-                <p class="text-xs sm:text-sm text-amber-200/90 font-medium tracking-wide">
-                    ভালোবাসায় ও আন্তরিক দোয়ায় তৈরি করেছেন <span class="text-amber-400 font-bold">নাছিম</span> ❤️
-                </p>
-            </div>
-
-        </div>
+    <!-- Top Banners / Flags -->
+    <div class="w-full flex justify-between items-center max-w-5xl px-2">
+        <div class="text-amber-400/80 text-lg sm:text-xl font-bold tracking-widest">🚩 ▼ ▼ ▼ ▼ ▼</div>
+        <div class="text-amber-400/80 text-lg sm:text-xl font-bold tracking-widest">▼ ▼ ▼ ▼ ▼ 🚩</div>
     </div>
 
-    <!-- Animation Script -->
+    <!-- Main Content Wrapper (Responsive Flex/Grid) -->
+    <div class="w-full max-w-5xl flex flex-col md:flex-row items-center justify-center md:justify-around gap-6 sm:gap-10 my-auto py-4">
+        
+        <!-- Left Section -->
+        <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-3 sm:space-y-4 z-10 px-2">
+            <div class="inline-block bg-emerald-900/80 border border-emerald-500/40 px-4 py-1.5 rounded-full shadow-sm text-amber-300 font-semibold text-xs sm:text-sm">
+                🎂 22 October (Birthday)
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white drop-shadow-md tracking-wide font-[Poppins]">
+                Happy <span class="text-amber-300">Birthday</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl font-bold text-emerald-300">
+                শুভ জন্মদিন শিমু! 🎉
+            </p>
+
+            <!-- Open Book Card Button -->
+            <button onclick="toggleBook()" id="actionBtn" class="mt-2 sm:mt-4 px-6 py-3.5 bg-gradient-to-r from-amber-500 to-emerald-600 hover:from-amber-600 hover:to-emerald-700 text-white font-bold rounded-full shadow-lg border border-white/20 transition-all duration-300 transform active:scale-95 cursor-pointer flex items-center gap-2 text-sm sm:text-base">
+                <span>📖</span> Click Here Shimu 🌸
+            </button>
+        </div>
+
+        <!-- Right Section: Anime Girl Avatar using unnamed.jpg -->
+        <div class="relative flex items-center justify-center mt-4 md:mt-0">
+            <div class="absolute -top-6 -left-6 w-12 h-12 bg-amber-400/30 rounded-full blur-lg animate-bounce"></div>
+            <div class="absolute -bottom-4 -right-6 w-10 h-10 bg-emerald-400/30 rounded-full blur-lg animate-pulse"></div>
+
+            <div class="w-48 h-48 sm:w-60 sm:h-60 md:w-64 md:h-64 rounded-full border-4 border-amber-300/80 bg-emerald-900 overflow-hidden shadow-2xl floating">
+                <!-- একই ফোল্ডারে থাকা unnamed.jpg সরাসরি লোড হবে -->
+                <img src="unnamed.jpg" 
+                     onerror="this.src='unnamed.png'" 
+                     alt="Shimu Anime Avatar" 
+                     class="w-full h-full object-cover">
+            </div>
+            
+            <div class="absolute -bottom-3 bg-emerald-900/90 px-4 sm:px-5 py-1 rounded-full border border-amber-300/50 shadow-md text-amber-300 font-bold text-xs sm:text-sm">
+                Dear Shimu ✨
+            </div>
+        </div>
+
+    </div>
+
+    <!-- REAL BOOK OPENING MODAL -->
+    <div id="bookModal" class="fixed inset-0 bg-black/75 backdrop-blur-md z-50 hidden flex items-center justify-center p-3 sm:p-4">
+        
+        <div class="book-wrapper w-full max-w-md sm:max-w-lg h-[450px] sm:h-[500px] relative">
+            <div class="book w-full h-full rounded-2xl shadow-2xl">
+                
+                <!-- INNER PAGE (বইয়ের ভেতরের পাতা) -->
+                <div class="absolute inset-0 bg-emerald-950 border-2 border-amber-400/50 rounded-2xl p-4 sm:p-6 md:p-8 flex flex-col justify-between text-slate-100 z-1">
+                    <div class="flex justify-between items-center border-b border-emerald-800 pb-2 sm:pb-3">
+                        <span class="font-bold text-base sm:text-lg text-amber-300">To Shimu! 💌</span>
+                        <button onclick="toggleBook()" class="text-xs bg-emerald-800 hover:bg-emerald-700 text-amber-200 px-3 py-1.5 rounded-full border border-amber-400/30 cursor-pointer">
+                            ✕ বন্ধ করুন
+                        </button>
+                    </div>
+
+                    <div class="space-y-2 sm:space-y-3.5 text-xs sm:text-sm md:text-base leading-relaxed text-justify font-medium text-slate-200 bg-black/25 p-3 sm:p-4 rounded-2xl border border-emerald-800/60 shadow-inner my-auto overflow-y-auto max-h-[280px]">
+                        <p class="font-bold text-emerald-300 text-sm sm:text-base">আসসালামু আলাইকুম।</p>
+                        <p>আল্লাহর অশেষ কৃপায় তোমার জীবনের আরও একটি বছর কেটে গেল। মহান আল্লাহ সুবহানাহু ওয়া তায়ালা তোমার অতীতের সব ভুলত্রুটি ক্ষমা করে দিক, আর তোমার আগামী দিনগুলোকে ঈমান, চমৎকার সুস্থতা, বরকত ও হেদায়েতে পরিপূর্ণ করে দিক।</p>
+                        <p>আল্লাহ তোমাকে দুনিয়া ও আখেরাত—উভয় জগতেই উত্তম প্রতিদান দান করুন এবং তোমার জীবনের প্রতিটি ভালো ইচ্ছাকে কবুল করুন।</p>
+                    </div>
+
+                    <div class="text-center pt-2 sm:pt-3 border-t border-emerald-800">
+                        <p class="font-bold text-amber-300 text-sm sm:text-base md:text-lg">
+                            জন্মদিনের অনেক অনেক দোয়া ও শুভকামনা! 🤲✨
+                        </p>
+                    </div>
+                </div>
+
+                <!-- BOOK COVER (বইয়ের প্রচ্ছদ যা বাম দিকে খোলে) -->
+                <div class="book-cover">
+                    <!-- Front Cover -->
+                    <div class="book-cover-front bg-gradient-to-br from-emerald-800 via-emerald-900 to-teal-950 border-2 border-amber-400 flex flex-col items-center justify-center p-4 sm:p-6 text-center shadow-2xl">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 bg-amber-400/20 rounded-full flex items-center justify-center text-3xl sm:text-4xl mb-3 sm:mb-4 border border-amber-300/40">
+                            🌸
+                        </div>
+                        <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-amber-300 mb-2">বিশেষ উপহার 📖</h2>
+                        <p class="text-emerald-200 text-xs sm:text-sm md:text-base font-medium mb-4 sm:mb-6">শিমুর জন্মদিনের ইসলামিক কার্ড</p>
+                        <span class="text-xs bg-amber-400/20 text-amber-300 px-3 sm:px-4 py-2 rounded-full border border-amber-400/30">
+                            👈 পৃষ্ঠা খুলতে ট্যাপ করুন
+                        </span>
+                    </div>
+
+                    <!-- Back Side of Front Cover -->
+                    <div class="book-cover-back bg-emerald-900 border-2 border-amber-400/50 flex items-center justify-center p-4">
+                        <p class="text-amber-200/60 text-xs italic">বিশেষ মুহূর্তের দোয়া ও শুভেচ্ছা ❤️</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Creator Credit Footer -->
+    <footer class="w-full text-center py-3 text-xs sm:text-sm text-emerald-300/80 font-medium tracking-wider border-t border-emerald-800/50 mt-2">
+        ভালোবাসায় ও আন্তরিক দোয়ায় তৈরি করেছেন <span class="text-amber-300 font-bold">নাছিম</span> ❤️
+    </footer>
+
+    <!-- Scripts -->
     <script>
+        function toggleBook() {
+            const modal = document.getElementById('bookModal');
+            const bookWrapper = document.querySelector('.book-wrapper');
+
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    bookWrapper.classList.add('open');
+                    startCelebration();
+                }, 100);
+            } else {
+                bookWrapper.classList.remove('open');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 600);
+            }
+        }
+
         function startCelebration() {
             const emojis = ['🌸', '🌹', '❤️', '✨', '🎉', '💖', '💐', '🎂'];
-            const totalItems = 45; // ঝরে পড়ার সংখ্যা
+            const totalItems = 40;
 
             for (let i = 0; i < totalItems; i++) {
                 setTimeout(() => {
                     createEmoji(emojis[Math.floor(Math.random() * emojis.length)]);
-                }, i * 70); // একের পর এক পড়ার জন্য টাইমিং
+                }, i * 70);
             }
         }
 
@@ -112,10 +235,9 @@
             el.classList.add('falling-emoji');
             el.innerText = emojiSymbol;
 
-            // Random positions and sizes
-            const startX = Math.random() * 90 + 5; // 5% to 95% screen width
-            const size = Math.random() * 20 + 20; // 20px to 40px
-            const duration = Math.random() * 2 + 2.5; // 2.5s to 4.5s fall speed
+            const startX = Math.random() * 90 + 5;
+            const size = Math.random() * 20 + 20;
+            const duration = Math.random() * 2 + 2.5;
 
             el.style.left = startX + 'vw';
             el.style.fontSize = size + 'px';
@@ -123,7 +245,6 @@
 
             document.body.appendChild(el);
 
-            // Remove after animation ends
             setTimeout(() => {
                 el.remove();
             }, duration * 1000);
